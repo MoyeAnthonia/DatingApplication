@@ -5,11 +5,11 @@ import { Observable } from 'rxjs';
 import { User } from '../_models/user';
 
 // for authorization login
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Authorization': 'Bearer ' + localStorage.getItem('token')
-  })
-};
+// const httpOptions = {
+//   headers: new HttpHeaders({
+//     'Authorization': 'Bearer ' + localStorage.getItem('token')
+//   })
+// };
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +20,10 @@ export class UserService {
   constructor(private httpClient: HttpClient) { }
 
   getUsers(): Observable<User[]> {
-    return this.httpClient.get<User[]>(this.baseUrl + 'users', httpOptions);
+    return this.httpClient.get<User[]>(this.baseUrl + 'users');
   }
 
   getUser(id): Observable<User> {
-    return this.httpClient.get<User>(this.baseUrl + 'users/' + id, httpOptions);
+    return this.httpClient.get<User>(this.baseUrl + 'users/' + id);
   }
 }
